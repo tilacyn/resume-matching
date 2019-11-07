@@ -3,12 +3,9 @@ import requests
 url = 'https://api.hh.ru/vacancies'
 
 def fetch_vacancies(name, n):
+	par = {'text': name, 'area': '113', 'per_page': str(n), 'page': 0}
+	r = requests.get(url, params=par)
+	whole_json = r.json()
+	return whole_json['items']
 
-    for i in range(n):
-        par = {'text': name, 'area': '113', 'per_page': '1', 'page': i}
-        r = requests.get(url, params=par)
-        e = r.json()
-        print(e)
-        return e
-
-e = fetch_vacancies('software engineer', 1)
+vacancy = fetch_vacancies('software engineer', 1)
