@@ -13,9 +13,10 @@ class JobSpiderResumeFetcher:
 	def __init__(self):
 		self.jobs_spider_url = "http://www.jobspider.com/job/resume-search-results.asp/words_java/searchtype_1"
 
-	def fetch_resumes_page(self):
-		r = requests.get(self.jobs_spider_url, proxies=proxies)
+	def fetch_resumes_page(self, page_number):
+		r = requests.get(self.jobs_spider_url + '/page_' + str(page_number), proxies=proxies)
 		self.resumes_page = r.text
+		print("downloaded resume page:", page_number)
 
 	def fetch_resume_files(self):
 		resume_urls = re.findall('view-resume-\\d+\\.html', self.resumes_page)
