@@ -1,6 +1,6 @@
 from resumes.fetch.resume_fetcher import JobSpiderResumeFetcher
 from vacancy_fetcher import JobSpiderVacancyFetcher
-from resumes.parse.job_spider_parser import JobSpiderHTMLParser
+from resumes.parse.job_spider_parser import JobSpiderHTMLResumeParser
 import resumes.parse.job_spider_parser as sp
 from os import listdir
 
@@ -29,7 +29,7 @@ def print_resume(resume):
 def parse_resumes():
     resumes = []
     for fname in listdir('resumes'):
-        parser = JobSpiderHTMLParser()
+        parser = JobSpiderHTMLResumeParser()
         print(fname)
         f = open('resumes/' + fname)
         parser.feed(f.read())
@@ -41,9 +41,9 @@ def parse_resumes():
     return resumes
 
 
-fetch_vacancies()
+fetch_resumes()
 
-#resumes = parse_resumes()
+resumes = parse_resumes()
 
-#for r in resumes[:20]:
-#    print_resume(r)
+for r in resumes[:20]:
+    print_resume(r)
