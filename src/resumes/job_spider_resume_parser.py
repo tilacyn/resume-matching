@@ -1,5 +1,5 @@
 from html.parser import HTMLParser
-from common.parser import format, try_add_field
+from common.parser import format, try_add_field, related
 
 
 resume_fields = {
@@ -37,7 +37,7 @@ class JobSpiderHTMLResumeParser(HTMLParser):
 
 
     def handle_data(self, data):
-        try_add_field(data, self.field_map)
+        try_add_field(data, self.field_map, resume_fields)
 
         for field in special_resume_fields:
             if related(data, field):
@@ -52,6 +52,7 @@ class JobSpiderHTMLResumeParser(HTMLParser):
 
         for field in special_resume_fields:
             if self.wait_for_special_fields[field]:
+                #print(field, self.field_map[field])
                 self.field_map[field].append(format(data))
 
 

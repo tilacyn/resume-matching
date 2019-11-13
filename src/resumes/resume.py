@@ -10,3 +10,9 @@ class Resume:
         self.us_work_authorization = field_map['U.S. Work Authorization']
         self.desired_industry = field_map['Desired Industry']
         self.id = field_map['id']
+        self.fmap = field_map
+
+    def print(self):
+        print("Resume #" + self.id)
+        for key in self.fmap.keys():
+            print(key + ":", self.fmap[key], '\n')

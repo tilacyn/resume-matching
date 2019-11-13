@@ -75,7 +75,7 @@ def count_metrics(resumes, vacancies):
     vacancies_kws = list(map(lambda v: [v.id, metrics.analyze_vacancy(v)], vacancies))
 
     all_matches = []
-    
+
     for r, v in itertools.product(resumes_kws, vacancies_kws):
         all_matches.append([r[0], v[0], metrics.matches(r[1], v[1])])
 

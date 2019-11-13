@@ -13,11 +13,14 @@ def make_prefix_by_special_field(s):
 def related(data, field):
     return data.startswith(make_prefix_by_special_field(field)) or data.startswith(field)
 
-def try_add_field(data, field_map):
-    for key in field_map:
-        if related(data, key):
+def try_add_field(data, field_map, field_set):
+    for key in field_set:
+        if related(data.lower(), key) or related(data, key):
             value_start_index = len(key) + 2
             field_map[key] = data[value_start_index:]
+            return True
+    return False
+
 
 def format(data):
     result = data
