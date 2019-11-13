@@ -1,2 +1,4 @@
-resumes/
-vacancies/
+#resumes
+#vacancies
+**/__pycache__
+.idea
