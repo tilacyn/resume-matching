@@ -26,13 +26,6 @@ def fetch_vacancies():
         fetcher.fetch_vacancy_files()
 
 
-def print_resume(resume):
-    print("RESUME #" + resume['id'], '\n')
-    for field in sp.field_set:
-        print(field + ':', resume[field])
-    print('\n', '\n')
-
-
 def parse_resumes():
     resumes = []
     observed_resumes = listdir('resumes')
@@ -75,7 +68,7 @@ def count_metrics(resumes, vacancies):
     vacancies_kws = list(map(lambda v: [v.id, metrics.analyze_vacancy(v)], vacancies))
 
     all_matches = []
-    
+
     for r, v in itertools.product(resumes_kws, vacancies_kws):
         all_matches.append([r[0], v[0], metrics.matches(r[1], v[1])])
 
