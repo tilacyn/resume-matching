@@ -10,7 +10,7 @@ for each of the formats which probably be able to parse such features as highlig
 0. For the unified resume / vacancy models (for all the formats) create an embedding vector.
 0. Implement a base-line (eg genetic algorithm) which is going to find pairs `<Resume, Vacancy>`, which match each other the best.
 0. Learn the function `Resumes x Vacancies -> R`, where the output is considered to be a measure of how 
-do the resume and the vacancy match each other.
+well do the resume and the vacancy match each other.
 
 ## Existing solutions
 
