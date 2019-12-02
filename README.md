@@ -21,21 +21,21 @@ and build an **NLP** and **Machine Learning** based tool for matching CVs and va
 
 By now the following goals are set:
 
-0. Get a resume-vacancy database with **response history**.
-0. Support different resume/vacancy formats (pdf, docx, etc) and create a proper parser
+1. Get a resume-vacancy database with **response history**.
+2. Support different resume/vacancy formats (pdf, docx, etc) and create a proper parser
 for each of the formats which probably be able to parse such features as highlighted words, headers, etc.
-0. For the unified resume / vacancy models (for all the formats) create an embedding vector.
-0. Implement a base-line (eg genetic algorithm) which is going to find pairs `<Resume, Vacancy>`, which match each other the best.
-0. Learn the function `Resumes x Vacancies -> R`, where the output is considered to be a measure of how 
+3. For the unified resume / vacancy models (for all the formats) create an embedding vector.
+4. Implement a base-line (eg genetic algorithm) which is going to find pairs `<Resume, Vacancy>`, which match each other the best.
+5. Learn the function `Resumes x Vacancies -> R`, where the output is considered to be a measure of how 
 well do the resume and the vacancy match each other.
 
 ## Existing solutions
 
-#### BRAC University study
+### BRAC University study
 
 The suggested approach includes CV segmentation, Data extraction and Data evaluation.
 
-1. CV Segmentation is a process when the semi-structured CV form is parsed from a row file. This is
+1. CV Segmentation is a process when the semi-structured CV form is parsed from a raw file. This is
 mostly done via Font processing, building syntax trees, etc.
 2. Now when we have a segmented resume the goal is ti extract data. This can be done using syntax analysis
 or simple pattern matching. Eg syntax analysis may help us to find sentences with projects / achievements /
@@ -44,12 +44,12 @@ education description. While less complicated data may be retrieved via simple p
 
 The amount of data for system training still were very small (around 50? CVs).
 
-#### Resume Parser with NLP (KIIT University, India)
+### Resume Parser with NLP (KIIT University, India)
 
 A tool which just does resume parsing. Parsing consists of preprocessing (eg Tokenization) and NLP 
 (Lexical, Syntactic and Semantic Analysis)
 
-#### Aalto University
+### Aalto University
 
 Objective: classifying resume data into 27 job industrial categories.
 
@@ -58,7 +58,12 @@ Objective: classifying resume data into 27 job industrial categories.
 
 Model has been trained on a dataset of job description because they lacked resumes.
 
-#### Sovren
+CNN is applied to the matrix NWORDS x h where h
+
+new feature = tanh(w * concatenation(of x words) + b), max pooling
+
+
+### Sovren
 
 ## Embeddings
 
@@ -68,3 +73,21 @@ They include **dense** vector representations as well as **sparse** ones.
 
 ### TF-IDF
 
+### Word2Vec
+
+Word2Vec is a model which produces dense vectors out of words. It should be learned on the enormous text corpus.
+The main benefit of the model is that the result embeddings keep semantic and syntactic relations between
+the original words. I see two different ways on how to get these embeddings: either they should be originally pre-trained
+or they should be somehow modified making use of our resume train text corpus.
+
+### FastText
+
+Is an extension of word2vec model, which regards word morphology (it accounts subwords embeddings eg accurately -> accurate + ly)
+and that's why performs significantly better on syntactic relation tasks.
+
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																		
+### Bert
+
+**Sentence embeddings**
+
+State-of art 2018. 																																								
