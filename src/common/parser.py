@@ -2,7 +2,14 @@ junk_subs = {
     '\n',
     '\t',
     '\r',
-    '\x95'
+    '\x91',
+    '\x92',
+    '\x93',
+    '\x94',
+    '\x95',
+    '\x96',
+    '\x97',
+    '\x98'
 }
 
 
@@ -25,5 +32,5 @@ def try_add_field(data, field_map, field_set):
 def format(data):
     result = data
     for junk in junk_subs:
-        result = result.replace(junk, "")
+        result = result.replace(junk, " ")
     return result.strip()
