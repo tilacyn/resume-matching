@@ -1,6 +1,7 @@
 
 
 
+
 class Resume:
     def __init__(self, field_map):
         self.experience = field_map['Experience']
@@ -11,8 +12,12 @@ class Resume:
         self.desired_industry = field_map['Desired Industry']
         self.id = field_map['id']
         self.fmap = field_map
+        self.label = None
 
     def print(self):
         print("Resume #" + self.id)
         for key in self.fmap.keys():
             print(key + ":", self.fmap[key], '\n')
+
+    def set_label(self, label):
+        self.label = label

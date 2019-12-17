@@ -10,8 +10,10 @@ proxies = {
 livecareer_url = "https://www.livecareer.com/resume-search/r/software-engineer-1a723df48582480f91a70ffee2f8da7f"
 
 class JobSpiderResumeFetcher:
-	def __init__(self):
-		self.jobs_spider_url = "http://www.jobspider.com/job/resume-search-results.asp/words_java/searchtype_1"
+	def __init__(self, query, path_to_resumes_root):
+		self.path_to_resumes_root = path_to_resumes_root
+		self.query = query
+		self.jobs_spider_url = "http://www.jobspider.com/job/resume-search-results.asp/words_" + query + "/searchtype_1"
 
 	def fetch_resumes_page(self, page_number):
 		r = requests.get(self.jobs_spider_url + '/page_' + str(page_number), proxies=proxies)
@@ -25,7 +27,7 @@ class JobSpiderResumeFetcher:
 		for url_suffix in resume_urls:
 			url = "http://www.jobspider.com/job/" + url_suffix
 			print("connecting with", url)
-			f = open("resumes/" + url_suffix, "w", encoding='utf-8')
+			f = open(self.path_to_resumes_root + "/resumes/" + self.query + "/" + url_suffix, "w", encoding='utf-8')
 			r = requests.get(url, proxies=proxies)
 			print("html", url, "downloaded, OK")
 			f.write(r.text)

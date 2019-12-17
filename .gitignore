@@ -1,4 +1,5 @@
-#resumes
-#vacancies
+resumes/**
+vacancies/**
+**/.ipynb_checkpoints/**
 **/__pycache__
-.idea
+**/.idea/**
